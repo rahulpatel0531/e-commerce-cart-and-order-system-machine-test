@@ -4,8 +4,6 @@ const User = require("../models/User");
 
 exports.register = async (req, res, next) => {
     try {
-        console.log('body', req.body);
-        
         const { name, email, password } = req.body;
         if (!name || !email || !password) {
             return res.status(400).json({ mesage: "All fields are required" })

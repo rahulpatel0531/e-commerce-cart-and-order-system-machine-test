@@ -34,7 +34,6 @@ exports.listPromos = async (req, res, next) => {
 
 exports.updatePromo = async (req, res, next) => {
     try {
-        console.log('body', req.body)
         const promo = await Promo.findByIdAndUpdate(req.params.id, req.body, {new:true});
         return res.status(200).json({message: "Promo", promo})
     } catch (error) {

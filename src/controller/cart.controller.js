@@ -45,9 +45,6 @@ exports.getCart = async (req, res, next) => {
     try {
         const userId = req.user?.id || null;
         const tempId = req.query.tempId || null;
-
-        console.log('tempId', tempId)
-
         const identity = (userId) ? { userId } : { tempId };
         const cart = await Cart.findOne(identity).populate('items.product')
 
@@ -68,8 +65,6 @@ exports.updateCartItem = async (req, res, next) => {
         const cart = await Cart.findOne(identity);
         if (!cart) return res.status(404).json({ message: 'Cart not found' });
         let item = cart.items.id(itemId);
-        console.log('item ', item);
-
         if (!item) return res.status(404).json({ message: 'Item not found' });
 
         if (qty <= 0) {

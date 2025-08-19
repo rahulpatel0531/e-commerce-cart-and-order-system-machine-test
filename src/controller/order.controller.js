@@ -99,11 +99,7 @@ exports.checkout = async (req, res, next) => {
         const userId = req.user?.id || null;
         const tempId = req.body?.tempId || null;
 
-        console.log('userId', userId);
-        console.log('tempId', tempId);
-
         //  Best pracices
-
         // if (userId && tempId) {
         //     const guestCart = await Cart.findOne({ tempId });
         //     if (guestCart) {
@@ -114,6 +110,8 @@ exports.checkout = async (req, res, next) => {
         //     }
         // }
 
+        // For developement
+         
         let identity = {};
         if (userId && tempId) {
             identity = { $or: [{ userId }, { tempId }] };
